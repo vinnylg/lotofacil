@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from pandas import read_csv
 
 
-def carregar_dados(guia='Importar_Ciclo'):
+def carregar_dados(guia='base_dados'):
     """
     Importando os dados da planilha do Excel gerando o dataframe da
     base de dados.

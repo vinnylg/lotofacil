@@ -22,10 +22,13 @@ def download(numero:int=0):
 	else:
 		res = requests.get(f"https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/{numero}")
 		
+	logger.info(f"Response status code: {res.status_code}")
 	return res.json()
 
 def download_all() -> list:
+	logger.info(f"Requesting last lotofacil")
 	last = download()
+	logger.info(f"Last sorteio {last['numero']}")
 	files = [ join('dados','resultados',f"{last['numero']}.json")]
 	with codecs.open(files[0], 'w', encoding='utf-8') as f:
 		json.dump(last, f, indent=2, ensure_ascii=False)
